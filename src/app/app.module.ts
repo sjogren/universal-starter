@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Inject, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { REST_URL } from './tokens';
 
 @NgModule({
   declarations: [
@@ -21,4 +22,8 @@ import { HomeComponent } from './home/home.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(@Inject(REST_URL) private restUrl) {
+    console.log('restUrl: ', restUrl);
+  }
+}
